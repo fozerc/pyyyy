@@ -8,14 +8,18 @@ class Figure:
             self.color = "black"
 
     def _change_place(self, *args):
-        if args[0] > 7 or args[1] > 7:
+        if args[0] > 7 or args[1] > 7 and args[0] <= 0 or args[1] <= 0:
             return print("ход за пределы доски")
         else:
             self.place_on_board = args
             return print(f"вы походили на клетки {self.place_on_board}")
 
-# class Pawn(Figure):
+class Pawn(Figure):
+    place_on_board: tuple = (2, 1)
+    def _change_place(self, *args):
+        if args[0] > 7 or args[1] > 7 and args[0] <= 0 or args[1] <= 0:
+            return print("ход за пределы доски")
+        else:
+            self.place_on_board = args
+            return print(f"вы походили на клетки {self.place_on_board}")
 
-
-lox = Figure()
-lox._change_place(6, 6)
