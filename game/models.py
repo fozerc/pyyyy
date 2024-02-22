@@ -10,11 +10,18 @@ from random import randint
 
 class Player:
     def __init__(self):
+        """
+        Create players attributes
+        """
         self.name: str = input("Enter your name")
         self.lives: int = PLAYER_LIVES
         self.score: int = 0
 
     def select_attack(self) -> str:
+        """
+        Creates an infinite loop asking the player for his turn
+        :return string:
+        """
         while True:
             user_input = input("Input 1, 2, 3: ")
             try:
@@ -24,13 +31,17 @@ class Player:
                 print("Please input numbers: 1, 2, 3")
                 continue
 
-    def decrease_lives(self):
+    def decrease_lives(self) -> None:
+        """
+        Decrease players hp and when player's hp 0 raise GameOver
+        :return None:
+        """
         self.lives -= 1
         print("You got -1 hp")
         try:
             player_dead(self.lives)
         except GameOver:
-            print("You're dead, try to play again!")
+            raise GameOver
 
     def add_score(self):
         raise NotImplementedError
@@ -38,16 +49,28 @@ class Player:
 
 class Enemy:
     def __init__(self):
+        """
+        Creates enemy attributes
+        """
         self.lives: int = 1
         self.level: int = 1
 
-    def select_attack(self):
+    def select_attack(self) -> str:
+        """
+        Makes random attack for bot
+        :return str:
+        """
         random_attack = str(randint(1, 3))
         return ALLOWED_ATTACKS.get(random_attack)
 
-    def decrease_lives(self):
+    def decrease_lives(self) -> None:
+        """
+        Decrease enemy hp and when enemy's hp 0 raise GameOver
+        :return: None
+        """
         self.lives -= 1
+        print("Enemy got -1 hp")
         try:
             enemy_dead(self.lives)
         except EnemyDown:
-            print("Enemy is dead, you're win!")
+            raise EnemyDown
