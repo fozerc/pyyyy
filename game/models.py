@@ -1,5 +1,4 @@
-from settings import PLAYER_LIVES
-from settings import ALLOWED_ATTACKS
+from settings import PLAYER_LIVES, POINTS_FOR_KILLING, ALLOWED_ATTACKS, HARD_MODE_MULTIPLIER, MODES
 from exceptions import InvalidInput
 from exceptions import incorrect_input
 from exceptions import GameOver
@@ -13,7 +12,7 @@ class Player:
         """
         Create players attributes
         """
-        self.name: str = input("Enter your name")
+        self.name: str = input("Enter your name to start game: ")
         self.lives: int = PLAYER_LIVES
         self.score: int = 0
 
@@ -23,7 +22,7 @@ class Player:
         :return string:
         """
         while True:
-            user_input = input("Input 1, 2, 3: ")
+            user_input = input("Choose you're weapon 1 - PAPER, 2 - STONE, 3 - SCISSORS: ")
             try:
                 incorrect_input(user_input)
                 return ALLOWED_ATTACKS.get(user_input)
@@ -44,16 +43,19 @@ class Player:
             raise GameOver
 
     def add_score(self):
-        raise NotImplementedError
+        self.score += POINTS_FOR_KILLING
 
 
 class Enemy:
-    def __init__(self):
+    def __init__(self, enemy_level: int, game_mode: str):
         """
         Creates enemy attributes
         """
-        self.lives: int = 1
-        self.level: int = 1
+        self.level: int = enemy_level
+        if game_mode == '1' in MODES:
+            self.lives: int = enemy_level + 1
+        elif game_mode == '2' in MODES:
+            self.lives: int == enemy_level + HARD_MODE_MULTIPLIER
 
     def select_attack(self) -> str:
         """

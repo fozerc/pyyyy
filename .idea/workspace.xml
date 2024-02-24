@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64e25b74-aba5-4e4a-85fb-d94c94b2a7ca" name="Changes" comment="making game pt2">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="64e25b74-aba5-4e4a-85fb-d94c94b2a7ca" name="Changes" comment="making game pt3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/exceptions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/score.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "rock-paper-scissors",
-    "ignore.virus.scanning.warn.message": "true"
+    "ignore.virus.scanning.warn.message": "true",
+    "settings.editor.selected.configurable": "settings.qodana"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -95,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708519580960</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="making game pt3">
+      <option name="closed" value="true" />
+      <created>1708631519802</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708631519802</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +121,7 @@
     <MESSAGE value="started to make a chess" />
     <MESSAGE value="making chess" />
     <MESSAGE value="making game pt2" />
-    <option name="LAST_COMMIT_MESSAGE" value="making game pt2" />
+    <MESSAGE value="making game pt3" />
+    <option name="LAST_COMMIT_MESSAGE" value="making game pt3" />
   </component>
 </project>

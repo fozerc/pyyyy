@@ -1,26 +1,29 @@
 from models import Player, Enemy
-from settings import ATTACK_PAIRS_OUTCOME
-from settings import WIN, DRAW, LOSE
+from settings import ATTACK_PAIRS_OUTCOME, HARD_MODE_MULTIPLIER
 from exceptions import EnemyDown
 from exceptions import GameOver
 
+
 class Game:
-    def __init__(self):
+    def __init__(self, player_object: object, game_mode: str):
         """
         creates players and enemy attributes
         """
-        self.player = Player()
-        self.enemy = Enemy()
-        # self.mode
+        self.player = player_object
+        self.level = 1
+        self.mode = game_mode
+        self.enemy = Enemy(self.level, self.mode)
 
-    def create_enemy(self, level: int) -> None:
+    def create_enemy(self, enemy_level: int, game_mode: str) -> None:
         """
         creates a new enemy
         :return None:
         """
-        self.enemy = Enemy()
+        self.enemy = Enemy(enemy_level, game_mode)
 
-    def fight(self, player_attack: str, enemy_attack: str) -> int:
+    def fight(self,
+              player_attack: str,
+              enemy_attack: str) -> int:
         """
         returns result of players and enemy fight from const
         :param player_attack: players attack
@@ -37,7 +40,6 @@ class Game:
         """
         if match_result == 1:
             self.enemy.decrease_lives()
-            print("win")
         elif match_result == -1:
             self.player.decrease_lives()
         elif match_result == 0:
@@ -54,7 +56,11 @@ class Game:
                 print("You're dead, try to play again")
                 break
             except EnemyDown:
-                print("Enemy is dead, ready to new fight?")
+                self.player.add_score()
+                self.create_enemy(self.enemy.level + 1, self.mode)
+                print(f"Enemy is dead, you got +5 points, "
+                      f"now you're score is - {self.player.score}. "
+                      f"Here is a new enemy with higher lvl {self.enemy.level}")
 
 
 # def fight(player_attack, enemy_attack):
@@ -67,5 +73,5 @@ class Game:
 # play = player_attack.select_attack()
 # enem = enemy_attack.select_attack()
 #
-igra = Game()
+igra = Game(Player(), '1')
 igra.play()
