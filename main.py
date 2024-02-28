@@ -59,9 +59,9 @@ def main() -> None:
             show_scores()
         elif menu_controls == '3':
             exit()
-            break
         else:
             print("please input 1 - 2 - 3")
+            continue
 
 
 main()

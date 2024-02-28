@@ -59,7 +59,7 @@ class ScoreHandler:
         GameRecord().prepare_records()
         with open(self.file_name, "w") as file:
             for record in self.game_record.records:
-                file.write(f"{record.name}, {record.mode}, {record.score}")
+                file.write(f"{record.name}, {record.mode}, {record.score}\n")
 
     def display(self):
         for display_record in open(self.file_name):
