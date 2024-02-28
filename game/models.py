@@ -1,18 +1,19 @@
-from settings import PLAYER_LIVES, POINTS_FOR_KILLING, ALLOWED_ATTACKS, HARD_MODE_MULTIPLIER, MODES
-from exceptions import InvalidInput
-from exceptions import incorrect_input
-from exceptions import GameOver
-from exceptions import player_dead
-from exceptions import EnemyDown
-from exceptions import enemy_dead
+from game.settings import (PLAYER_LIVES, POINTS_FOR_KILLING, ALLOWED_ATTACKS, HARD_MODE_MULTIPLIER, MODES)
+from game.exceptions import PlayerInvalidInput
+from game.exceptions import player_incorrect_input
+from game.exceptions import GameOver
+from game.exceptions import player_dead
+from game.exceptions import EnemyDown
+from game.exceptions import enemy_dead
 from random import randint
 
+
 class Player:
-    def __init__(self):
+    def __init__(self, player_name):
         """
         Create players attributes
         """
-        self.name: str = input("Enter your name to start game: ")
+        self.name: str = player_name
         self.lives: int = PLAYER_LIVES
         self.score: int = 0
 
@@ -24,9 +25,9 @@ class Player:
         while True:
             user_input = input("Choose you're weapon 1 - PAPER, 2 - STONE, 3 - SCISSORS: ")
             try:
-                incorrect_input(user_input)
+                player_incorrect_input(user_input)
                 return ALLOWED_ATTACKS.get(user_input)
-            except InvalidInput:
+            except PlayerInvalidInput:
                 print("Please input numbers: 1, 2, 3")
                 continue
 
@@ -52,10 +53,10 @@ class Enemy:
         Creates enemy attributes
         """
         self.level: int = enemy_level
-        if game_mode == '1' in MODES:
+        if game_mode == '1':
             self.lives: int = enemy_level + 1
-        elif game_mode == '2' in MODES:
-            self.lives: int == enemy_level + HARD_MODE_MULTIPLIER
+        elif game_mode == '2':
+            self.lives: int = enemy_level + HARD_MODE_MULTIPLIER
 
     def select_attack(self) -> str:
         """
