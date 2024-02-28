@@ -2,6 +2,9 @@ from game.settings import MAX_RECORDS_NUMBER, SCORE_FILE
 
 
 class PlayerRecord:
+    """
+    contains a record of one player and uses magic method's to compare with others players
+    """
     def __init__(self, player_name, player_score, player_mode) -> None:
         self.name: str = player_name
         self.score: int = player_score
@@ -18,6 +21,9 @@ class PlayerRecord:
 
 
 class GameRecord:
+    """
+    contains a list with record of all players
+    """
     def __init__(self):
         self.records: list[PlayerRecord] = []
 
@@ -33,6 +39,10 @@ class GameRecord:
 
 
 class ScoreHandler:
+    """
+    class for processing scores.
+    displays all scores in console and writes every score in txt file
+    """
     def __init__(self):
         self.game_record = GameRecord()
         self.file_name = SCORE_FILE
